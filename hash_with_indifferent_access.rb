@@ -25,25 +25,16 @@ puts hash.indifAccess("c")
 
 
 
-
-class CoolHash < Hash
-	# attr_reader :hash
-
+class NewHash
 	def initialize(h)
-		h.keys.map do |k| 
-			if k.is_a? String 
-				k.to_sym
-				puts k  
-			end
-		end
-		@hash = h
+		@h = h
 	end
 
-	def get
-		return @hash
+	def [](x)
+		@h[x.to_sym] || @h[x.to_s]
 	end
 end
 
-hash = { a: 1, "b": 2, c: 3}
+hash = { a: 1, b: 2, c: 3}
 hash[:a] = 3
 puts hash
